@@ -29,7 +29,7 @@ module.exports = {
         },
         {
           loader: 'css-loader',
-           optios: {
+           options: {
              modules: true
            }
         },
@@ -40,8 +40,10 @@ module.exports = {
     }]
   },  
   devServer: {
-    contentBase: './public',
-    writeToDisc: true,
+    static: './public',
+    devMiddleware: {
+      writeToDisk: true,
+    },
     historyApiFallback: true,
   },
   externals: {
