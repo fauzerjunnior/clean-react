@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "test": "jest --passWithNoTests --no-cache --ruInBand",
+    "test": "jest --passWithNoTests --no-cache",
     "test:watch": "yarn test -- --watch",
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0",
+    "@testing-library/react": "^12.1.4",
     "@types/axios": "^0.14.0",
     "@types/faker": "^6.6.9",
     "@types/jest": "^27.4.1",
