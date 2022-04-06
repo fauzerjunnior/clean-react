@@ -150,4 +150,13 @@ describe('Login component', () => {
       password
     });
   });
+
+  it('should call authentication with correct values', () => {
+    const { sut, authenticationSpy } = makeSut();
+
+    simulateValidSubmit(sut);
+    simulateValidSubmit(sut);
+
+    expect(authenticationSpy.callsCount).toBe(1);
+  });
 });
