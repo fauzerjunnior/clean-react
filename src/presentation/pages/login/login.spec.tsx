@@ -1,27 +1,14 @@
-import React from 'react';
+import { ValidationStub } from '@/presentation/test';
+import { AuthenticationSpy } from '@/presentation/test/mock-authentication';
+import faker from '@faker-js/faker';
 import {
   cleanup,
   fireEvent,
   render,
-  RenderResult,
+  RenderResult
 } from '@testing-library/react';
-import { ValidationStub } from '@/presentation/test';
-import faker from '@faker-js/faker';
-import { Authentication, AuthenticationParams } from '@/domain/usecases';
-import { AccountModel } from '@/domain/models';
-import { mockAccountModel } from '@/domain/test';
+import React from 'react';
 import Login from './login';
-
-class AuthenticationSpy implements Authentication {
-  account = mockAccountModel();
-
-  params: AuthenticationParams;
-
-  async auth(params: AuthenticationParams): Promise<AccountModel> {
-    this.params = params;
-    return Promise.resolve(this.account);
-  }
-}
 
 type SutTypes = {
   sut: RenderResult;
@@ -38,12 +25,12 @@ const makeSut = (params?: SutParams): SutTypes => {
 
   validationStub.errorMessage = params?.validationError;
   const sut = render(
-    <Login validation={validationStub} authentication={authenticationSpy} />,
+    <Login validation={validationStub} authentication={authenticationSpy} />
   );
 
   return {
     sut,
-    authenticationSpy,
+    authenticationSpy
   };
 };
 
@@ -83,7 +70,7 @@ describe('Login component', () => {
     const passwordInput = sut.getByTestId('password');
 
     fireEvent.input(passwordInput, {
-      target: { value: faker.internet.password() },
+      target: { value: faker.internet.password() }
     });
     const passwordStatus = sut.getByTestId('password-status');
 
@@ -96,7 +83,7 @@ describe('Login component', () => {
     const emailInput = sut.getByTestId('email');
 
     fireEvent.input(emailInput, {
-      target: { value: faker.internet.email() },
+      target: { value: faker.internet.email() }
     });
     const emailStatus = sut.getByTestId('email-status');
 
@@ -109,7 +96,7 @@ describe('Login component', () => {
     const passwordInput = sut.getByTestId('password');
 
     fireEvent.input(passwordInput, {
-      target: { value: faker.internet.password() },
+      target: { value: faker.internet.password() }
     });
     const passwordStatus = sut.getByTestId('password-status');
 
@@ -121,12 +108,12 @@ describe('Login component', () => {
     const { sut } = makeSut();
     const emailInput = sut.getByTestId('email');
     fireEvent.input(emailInput, {
-      target: { value: faker.internet.email() },
+      target: { value: faker.internet.email() }
     });
 
     const passwordInput = sut.getByTestId('password');
     fireEvent.input(passwordInput, {
-      target: { value: faker.internet.password() },
+      target: { value: faker.internet.password() }
     });
 
     const submitButton = sut.getByTestId('submit') as HTMLButtonElement;
@@ -137,12 +124,12 @@ describe('Login component', () => {
     const { sut } = makeSut();
     const emailInput = sut.getByTestId('email');
     fireEvent.input(emailInput, {
-      target: { value: faker.internet.email() },
+      target: { value: faker.internet.email() }
     });
 
     const passwordInput = sut.getByTestId('password');
     fireEvent.input(passwordInput, {
-      target: { value: faker.internet.password() },
+      target: { value: faker.internet.password() }
     });
 
     const submitButton = sut.getByTestId('submit');
@@ -157,13 +144,13 @@ describe('Login component', () => {
     const emailInput = sut.getByTestId('email');
     const email = faker.internet.email();
     fireEvent.input(emailInput, {
-      target: { value: email },
+      target: { value: email }
     });
 
     const passwordInput = sut.getByTestId('password');
     const password = faker.internet.password();
     fireEvent.input(passwordInput, {
-      target: { value: password },
+      target: { value: password }
     });
 
     const submitButton = sut.getByTestId('submit');
@@ -171,7 +158,7 @@ describe('Login component', () => {
 
     expect(authenticationSpy.params).toEqual({
       email,
-      password,
+      password
     });
   });
 });
