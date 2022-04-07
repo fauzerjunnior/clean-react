@@ -46,6 +46,8 @@
         "react/destructuring-assignment": "off",
         "import/prefer-default-export": "off",
         "import/no-extraneous-dependencies": "off",
-        "react/jsx-no-constructed-context-values": "off"
+        "react/jsx-no-constructed-context-values": "off",
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }
