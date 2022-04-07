@@ -9,6 +9,7 @@ import {
   RenderResult,
   waitFor
 } from '@testing-library/react';
+import 'jest-localstorage-mock';
 import React from 'react';
 import Login from './login';
 
@@ -76,6 +77,11 @@ const simulateStatusForField = (
 
 describe('Login component', () => {
   afterEach(cleanup);
+
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it('should not render spinner and error on start', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
@@ -184,5 +190,17 @@ describe('Login component', () => {
     const mainError = sut.getByTestId('main-error');
     expect(mainError.textContent).toBe(error.message);
     expect(errorWrap.childElementCount).toBe(1);
+  });
+
+  test('should add accessToken to localstorage on success', async () => {
+    const { sut, authenticationSpy } = makeSut();
+    simulateValidSubmit(sut);
+
+    await waitFor(() => sut.getByTestId('form'));
+
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'accessToken',
+      authenticationSpy.account.accessToken
+    );
   });
 });
