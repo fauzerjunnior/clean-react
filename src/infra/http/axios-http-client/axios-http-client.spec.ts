@@ -1,14 +1,14 @@
-import { mockAxios } from "@/infra/http/test";
-import { mockPostRequest } from "@/data/test";
-import { AxiosHttpClient } from "./axios-http-client";
-import axios from "axios";
+import { mockAxios } from '@/infra/http/test';
+import { mockPostRequest } from '@/data/test';
+import axios from 'axios';
+import { AxiosHttpClient } from './axios-http-client';
 
 jest.mock('axios');
 
-type SutTypes = { 
-  sut: AxiosHttpClient,
+type SutTypes = {
+  sut: AxiosHttpClient;
   mockedAxios: jest.Mocked<typeof axios>;
-}
+};
 const makeSut = (): SutTypes => {
   const sut = new AxiosHttpClient();
   const mockedAxios = mockAxios();
@@ -17,7 +17,7 @@ const makeSut = (): SutTypes => {
     sut,
     mockedAxios
   };
-}
+};
 
 describe('AxiosHttpClient', () => {
   test('should call axios with correct values', async () => {

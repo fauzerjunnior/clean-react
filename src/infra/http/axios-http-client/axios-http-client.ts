@@ -1,4 +1,9 @@
-import { HttpPostClient, HttpPostParams, HttpResponse } from "@/data/protocols/http";
+/* eslint-disable class-methods-use-this */
+import {
+  HttpPostClient,
+  HttpPostParams,
+  HttpResponse
+} from '@/data/protocols/http';
 import axios from 'axios';
 
 export class AxiosHttpClient implements HttpPostClient<any, any> {
@@ -8,6 +13,6 @@ export class AxiosHttpClient implements HttpPostClient<any, any> {
     return {
       statusCode: httpResponse.status,
       body: httpResponse.data
-    }
+    };
   }
 }
