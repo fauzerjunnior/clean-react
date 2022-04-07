@@ -8,7 +8,7 @@ import {
 import Context from '@/presentation/context/form-context';
 import { Validation } from '@/presentation/protocols/validation';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Styles from './login-styles.scss';
 
 type Props = {
@@ -17,6 +17,7 @@ type Props = {
 };
 
 const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     isLoading: false,
     email: '',
@@ -49,6 +50,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       });
 
       localStorage.setItem('accessToken', account.accessToken);
+      navigate('/');
     } catch (error) {
       setState({
         ...state,
