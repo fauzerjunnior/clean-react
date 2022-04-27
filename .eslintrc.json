@@ -48,6 +48,7 @@
         "import/no-extraneous-dependencies": "off",
         "react/jsx-no-constructed-context-values": "off",
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "class-methods-use-this": "off"
     }
 }
