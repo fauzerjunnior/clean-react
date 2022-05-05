@@ -1,4 +1,5 @@
 import { InvalidCredentialsError } from '@/domain/errors';
+import { Login } from '@/presentation/pages';
 import { ValidationStub } from '@/presentation/test';
 import { AuthenticationSpy } from '@/presentation/test/mock-authentication';
 import faker from '@faker-js/faker';
@@ -13,7 +14,6 @@ import { createMemoryHistory } from 'history';
 import 'jest-localstorage-mock';
 import React from 'react';
 import { Router } from 'react-router-dom';
-import Login from './login';
 
 type SutTypes = {
   sut: RenderResult;
