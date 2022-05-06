@@ -11,6 +11,7 @@
     "test:watch": "yarn test -- --watch",
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage",
+    "test:coveralls": "yarn test:ci && coveralls < coverage/lcov.info",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "clean-webpack-plugin": "^4.0.0",
+    "coveralls": "^3.1.1",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
