@@ -1,4 +1,5 @@
 [![Build Status](https://app.travis-ci.com/fauzerjunnior/clean-react.svg?branch=master)](https://app.travis-ci.com/fauzerjunnior/clean-react)
+[![Coverage Status](https://coveralls.io/repos/github/fauzerjunnior/clean-react/badge.svg?branch=master)](https://coveralls.io/github/fauzerjunnior/clean-react?branch=master)
 
 # **Clean React - Enquetes para Programadores**
 
