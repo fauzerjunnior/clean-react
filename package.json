@@ -1,8 +1,9 @@
 {
   "name": "clean-react",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "version": "1.0.1",
+  "description": "React APP using TDD, SOLID, Clean Architecture and Typescript",
+  "author": "Fauzer Junior",
+  "license": "GNU GPL3",
   "scripts": {
     "start": "webpack-dev-server --open",
     "test": "jest --passWithNoTests --no-cache",
