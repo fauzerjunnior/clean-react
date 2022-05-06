@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/fauzerjunnior/clean-react.svg?branch=master)](https://app.travis-ci.com/fauzerjunnior/clean-react)
+
 # **Clean React - Enquetes para Programadores**
 
 ## [**Link para a documentação da API**](http://fordevs.herokuapp.com/api-docs)
