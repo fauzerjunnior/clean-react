@@ -3,8 +3,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{ts,js,tsx,jsx}',
     '!<rootDir>/src/main/**/*',
-    '!<rootDir>/src/domain/usecases/**/*',
-    '!<rootDir>/src/domain/models/**/*',
+    '!<rootDir>/src/**/index.ts',
     '!**/*.d.ts'
   ],
   coverageDirectory: 'coverage',
