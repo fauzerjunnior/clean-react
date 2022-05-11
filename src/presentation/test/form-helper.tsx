@@ -1,0 +1,29 @@
+import { RenderResult } from '@testing-library/react';
+
+export const testChildCount = (
+  sut: RenderResult,
+  fieldName: string,
+  count: number
+): void => {
+  const el = sut.getByTestId(fieldName);
+  expect(el.childElementCount).toBe(count);
+};
+
+export const testButtonIsDisabled = (
+  sut: RenderResult,
+  fieldname: string,
+  isDisabled: boolean
+): void => {
+  const button = sut.getByTestId(fieldname) as HTMLButtonElement;
+  expect(button.disabled).toBe(isDisabled);
+};
+
+export const testStatusForField = (
+  sut: RenderResult,
+  fieldName: string,
+  validationError?: string
+): void => {
+  const fieldStatus = sut.getByTestId(`${fieldName}-status`);
+  expect(fieldStatus.title).toBe(validationError || 'Sucesso!');
+  expect(fieldStatus.textContent).toBe(validationError ? '🔴' : '🟢');
+};
