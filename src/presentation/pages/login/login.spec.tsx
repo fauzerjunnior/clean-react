@@ -104,27 +104,16 @@ describe('Login component', () => {
     const { sut } = makeSut({ validationError });
 
     Helper.testChildCount(sut, 'error-wrap', 0);
+    Helper.testButtonIsDisabled(sut, 'submit', true);
   });
 
   it('should start with submit button disabled', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
-    Helper.testButtonIsDisabled(sut, 'submit', true);
-  });
-
-  it('should show email error if validation fails', () => {
-    const validationError = faker.random.words();
-    const { sut } = makeSut({ validationError });
-
     populateEmailField(sut);
+
+    Helper.testButtonIsDisabled(sut, 'submit', true);
     Helper.testStatusForField(sut, 'email', validationError);
-  });
-
-  it('should show password error if validation fails', () => {
-    const validationError = faker.random.words();
-    const { sut } = makeSut({ validationError });
-
-    populatePasswordField(sut);
     Helper.testStatusForField(sut, 'password', validationError);
   });
 
