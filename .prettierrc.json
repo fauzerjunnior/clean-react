@@ -2,5 +2,11 @@
   "bracketSpacing": true,
   "jsxsingleQuote": true,
   "singleQuote": true,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
 }
