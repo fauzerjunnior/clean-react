@@ -1,3 +1,4 @@
+import { AddAccount } from '@/domain/usecases';
 import {
   Footer,
   FormStatus,
@@ -11,9 +12,10 @@ import Styles from './sign-up-styles.scss';
 
 type Props = {
   validation: Validation;
+  addAccount: AddAccount;
 };
 
-const SignUp: React.FC<Props> = ({ validation }: Props) => {
+const SignUp: React.FC<Props> = ({ validation, addAccount }: Props) => {
   const [state, setState] = useState({
     isLoading: false,
     name: '',
@@ -45,6 +47,13 @@ const SignUp: React.FC<Props> = ({ validation }: Props) => {
   ): Promise<void> => {
     event.preventDefault();
     setState({ ...state, isLoading: true });
+
+    await addAccount.add({
+      name: state.name,
+      email: state.email,
+      password: state.password,
+      passwordConfirmation: state.passwordConfirmation
+    });
   };
 
   return (
