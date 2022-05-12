@@ -71,15 +71,6 @@ const testElementExists = (sut: RenderResult, fieldname: string): void => {
   expect(element).toBeTruthy();
 };
 
-const testElementText = (
-  sut: RenderResult,
-  fieldname: string,
-  content: string
-): void => {
-  const element = sut.getByTestId(fieldname);
-  expect(element.textContent).toBe(content);
-};
-
 describe('Login component', () => {
   afterEach(cleanup);
 
@@ -143,7 +134,7 @@ describe('Login component', () => {
     });
   });
 
-  it('should call authentication with correct values', async () => {
+  it('should call authentication only once', async () => {
     const { sut, authenticationSpy } = makeSut();
 
     await simulateValidSubmit(sut);
@@ -163,24 +154,20 @@ describe('Login component', () => {
   test('should present error if authentication fails', async () => {
     const { sut, authenticationSpy } = makeSut();
     const error = new InvalidCredentialsError();
-    jest
-      .spyOn(authenticationSpy, 'auth')
-      .mockReturnValueOnce(Promise.reject(error));
+    jest.spyOn(authenticationSpy, 'auth').mockRejectedValueOnce(error);
 
     await simulateValidSubmit(sut);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
     Helper.testChildCount(sut, 'error-wrap', 1);
   });
 
   test('should present error if SaveAcccessToken fails', async () => {
     const { sut, saveAccessTokenMock } = makeSut();
     const error = new InvalidCredentialsError();
-    jest
-      .spyOn(saveAccessTokenMock, 'save')
-      .mockReturnValueOnce(Promise.reject(error));
+    jest.spyOn(saveAccessTokenMock, 'save').mockRejectedValueOnce(error);
 
     await simulateValidSubmit(sut);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
     Helper.testChildCount(sut, 'error-wrap', 1);
   });
 
@@ -197,7 +184,7 @@ describe('Login component', () => {
 
   test('should go to signup page', async () => {
     const { sut } = makeSut();
-    const register = sut.getByTestId('signup');
+    const register = sut.getByTestId('signup-link');
 
     fireEvent.click(register);
     expect(history.location.pathname).toBe('/signup');
