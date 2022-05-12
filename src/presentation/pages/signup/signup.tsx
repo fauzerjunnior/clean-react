@@ -8,7 +8,7 @@ import {
 import Context from '@/presentation/context/form-context';
 import { Validation } from '@/presentation/protocols/validation';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Styles from './sign-up-styles.scss';
 
 type Props = {
@@ -121,7 +121,9 @@ const SignUp: React.FC<Props> = ({
           >
             Entrar
           </button>
-          <span className={Styles.link}>Voltar para login</span>
+          <Link data-testid="login-link" to="/" className={Styles.link}>
+            Voltar para login
+          </Link>
           <FormStatus />
         </form>
       </Context.Provider>
