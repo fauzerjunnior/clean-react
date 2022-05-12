@@ -71,15 +71,6 @@ const testElementExists = (sut: RenderResult, fieldname: string): void => {
   expect(element).toBeTruthy();
 };
 
-const testElementText = (
-  sut: RenderResult,
-  fieldname: string,
-  content: string
-): void => {
-  const element = sut.getByTestId(fieldname);
-  expect(element.textContent).toBe(content);
-};
-
 describe('Login component', () => {
   afterEach(cleanup);
 
@@ -166,7 +157,7 @@ describe('Login component', () => {
     jest.spyOn(authenticationSpy, 'auth').mockRejectedValueOnce(error);
 
     await simulateValidSubmit(sut);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
     Helper.testChildCount(sut, 'error-wrap', 1);
   });
 
@@ -178,7 +169,7 @@ describe('Login component', () => {
       .mockReturnValueOnce(Promise.reject(error));
 
     await simulateValidSubmit(sut);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
     Helper.testChildCount(sut, 'error-wrap', 1);
   });
 
