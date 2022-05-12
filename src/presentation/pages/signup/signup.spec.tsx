@@ -1,3 +1,4 @@
+import { InvalidCredentialsError } from '@/domain/errors';
 import { AddAccountSpy, Helper, ValidationStub } from '@/presentation/test';
 import faker from '@faker-js/faker';
 import {
@@ -48,6 +49,15 @@ const simulateValidSubmit = async (
   const form = sut.getByTestId('form');
   fireEvent.submit(form);
   await waitFor(() => form);
+};
+
+const testElementText = (
+  sut: RenderResult,
+  fieldname: string,
+  content: string
+): void => {
+  const element = sut.getByTestId(fieldname);
+  expect(element.textContent).toBe(content);
 };
 
 describe('SignUp component', () => {
@@ -175,5 +185,15 @@ describe('SignUp component', () => {
 
     await simulateValidSubmit(sut);
     expect(addAccountSpy.callsCount).toBe(0);
+  });
+
+  test('should present error if AddAccount fails', async () => {
+    const { sut, addAccountSpy } = makeSut();
+    const error = new InvalidCredentialsError();
+    jest.spyOn(addAccountSpy, 'add').mockReturnValueOnce(Promise.reject(error));
+
+    await simulateValidSubmit(sut);
+    testElementText(sut, 'main-error', error.message);
+    Helper.testChildCount(sut, 'error-wrap', 1);
   });
 });
