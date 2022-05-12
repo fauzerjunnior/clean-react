@@ -10,7 +10,7 @@ import Context from '@/presentation/context/form-context';
 import { Validation } from '@/presentation/protocols/validation';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Styles from './sign-up-styles.scss';
+import Styles from './signup-styles.scss';
 
 type Props = {
   validation: Validation;
