@@ -9,11 +9,11 @@ export class ValidationComposite implements Validation {
   }
 
   // eslint-disable-next-line consistent-return
-  validate(fieldName: string, fieldValue: string): string {
+  validate(fieldName: string, input: object): string {
     const validators = this.validators.filter((v) => v.field === fieldName);
     // eslint-disable-next-line no-restricted-syntax
     for (const validator of validators) {
-      const error = validator.validate(fieldValue);
+      const error = validator.validate(input);
 
       if (error) {
         return error.message;
