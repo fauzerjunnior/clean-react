@@ -16,10 +16,8 @@ describe('MinLengthValidation', () => {
 
   test('should return falsy if value is valid', () => {
     const field = faker.database.column();
-    const value = faker.datatype.number(5);
-
-    const sut = makeSut(field, value);
-    const error = sut.validate({ [field]: value });
+    const sut = makeSut(field, 5);
+    const error = sut.validate({ [field]: 5 });
 
     expect(error).toBeFalsy();
   });

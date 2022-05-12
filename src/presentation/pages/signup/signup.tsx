@@ -110,7 +110,7 @@ const SignUp: React.FC<Props> = ({
           onSubmit={handleSubmit}
         >
           <h2>Criar conta</h2>
-          <Input type="text" name="name" placeholder="Digite seu name" />
+          <Input type="text" name="name" placeholder="Digite seu nome" />
           <Input type="email" name="email" placeholder="Digite seu email" />
           <Input
             type="password"
@@ -123,7 +123,7 @@ const SignUp: React.FC<Props> = ({
             placeholder="Repita a sua senha"
           />
           <SubmitButton text="Cadastrar" />
-          <Link data-testid="login-link" to="/" className={Styles.link}>
+          <Link data-testid="login-link" to="/login" className={Styles.link}>
             Voltar para login
           </Link>
           <FormStatus />

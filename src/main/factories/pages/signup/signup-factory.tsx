@@ -1,13 +1,13 @@
 import { makeLoginValidation } from '@/main/factories/pages';
-import { makeRemoteAuthentication } from '@/main/factories/usecases/authentication/remote-authentication-factory';
+import { makeRemoteAddAccount } from '@/main/factories/usecases/add-account/remote-add-account-factory';
 import { makeLocalSaveAccessToken } from '@/main/factories/usecases/save-access-token/local-save-access-token-factory';
-import { Login } from '@/presentation/pages';
+import { SignUp } from '@/presentation/pages';
 import React from 'react';
 
-export const LoginFactory: React.FC = () => {
+export const SignUpFactory: React.FC = () => {
   return (
-    <Login
-      authentication={makeRemoteAuthentication()}
+    <SignUp
+      addAccount={makeRemoteAddAccount()}
       validation={makeLoginValidation()}
       saveAccessToken={makeLocalSaveAccessToken()}
     />

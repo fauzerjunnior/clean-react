@@ -233,6 +233,6 @@ describe('SignUp component', () => {
     const loginLink = sut.getByTestId('login-link');
 
     fireEvent.click(loginLink);
-    expect(history.location.pathname).toBe('/');
+    expect(history.location.pathname).toBe('/login');
   });
 });
