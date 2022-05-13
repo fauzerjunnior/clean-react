@@ -1,6 +1,6 @@
 {
   "name": "clean-react",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "React APP using TDD, SOLID, Clean Architecture and Typescript",
   "author": "Fauzer Junior",
   "license": "MIT",
