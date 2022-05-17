@@ -6,10 +6,7 @@ import { AddAccount, AddAccountParams } from '@/domain/usecases';
 export class RemoteAddAccount implements AddAccount {
   constructor(
     private readonly url: string,
-    private readonly httpPostClient: HttpPostClient<
-      AddAccountParams,
-      AccountModel
-    >
+    private readonly httpPostClient: HttpPostClient<AccountModel>
   ) {}
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
