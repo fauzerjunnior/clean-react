@@ -1,15 +1,17 @@
-/* eslint-disable max-classes-per-file */
+import { HttpStatusCode } from '@/data/protocols/http';
 import { HttpGetClientSpy } from '@/data/test';
+import { UnexpectedError } from '@/domain/errors';
+import { SurveyModel } from '@/domain/models';
 import faker from '@faker-js/faker';
 import { RemoveLoadSurveyList } from './remote-load-survey-list';
 
 type SutTypes = {
   sut: RemoveLoadSurveyList;
-  httpGetClientSpy: HttpGetClientSpy;
+  httpGetClientSpy: HttpGetClientSpy<SurveyModel[]>;
 };
 
 const makeSut = (url = faker.internet.url()): SutTypes => {
-  const httpGetClientSpy = new HttpGetClientSpy();
+  const httpGetClientSpy = new HttpGetClientSpy<SurveyModel[]>();
   const sut = new RemoveLoadSurveyList(url, httpGetClientSpy);
 
   return {
@@ -25,5 +27,15 @@ describe('RemoveLoadSurveyList', () => {
     await sut.loadAll();
 
     expect(httpGetClientSpy.url).toBe(url);
+  });
+
+  test('should throw UnexpectedError if HttpGetClient return 403', async () => {
+    const { sut, httpGetClientSpy } = makeSut();
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.forbidden
+    };
+    const promise = sut.loadAll();
+
+    await expect(promise).rejects.toThrow(new UnexpectedError());
   });
 });
