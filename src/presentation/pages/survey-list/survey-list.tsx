@@ -1,21 +1,11 @@
-/* eslint-disable jsx-a11y/alt-text */
-import { Footer, Logo } from '@/presentation/components';
+import { Footer, Header } from '@/presentation/components';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Styles from './survey-list-styles.scss';
 
 const SurveyList: React.FC = () => {
   return (
     <div className={Styles.surveyListWrap}>
-      <header className={Styles.headerWrap}>
-        <div className={Styles.headerContent}>
-          <Logo />
-          <div className={Styles.logoutWrap}>
-            <span>Fauzer</span>
-            <Link to="/">Sair</Link>
-          </div>
-        </div>
-      </header>
+      <Header />
       <div className={Styles.contentWrap}>
         <h2>Enquetes</h2>
         <ul>
