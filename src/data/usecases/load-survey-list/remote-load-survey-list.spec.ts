@@ -71,4 +71,14 @@ describe('RemoveLoadSurveyList', () => {
     const surveyList = await sut.loadAll();
     expect(surveyList).toEqual(httpResult);
   });
+
+  test('should return an empty list if HttpGetAccount returns 204', async () => {
+    const { sut, httpGetClientSpy } = makeSut();
+
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.noContent
+    };
+    const surveyList = await sut.loadAll();
+    expect(surveyList).toEqual([]);
+  });
 });
