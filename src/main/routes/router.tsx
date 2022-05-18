@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
+import { SurveyList } from '@/presentation/pages';
 import '@/presentation/styles/global.scss';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -11,6 +12,7 @@ const Router: React.FC = () => {
       <Routes>
         <Route path="/login" element={<LoginFactory />} />
         <Route path="/signup" element={<SignUpFactory />} />
+        <Route path="/" element={<SurveyList />} />
       </Routes>
     </BrowserRouter>
   );
