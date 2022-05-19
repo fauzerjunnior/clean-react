@@ -1,4 +1,4 @@
-import { AddAccount, SaveAccessToken } from '@/domain/usecases';
+import { AddAccount, UpdateCurrentAccount } from '@/domain/usecases';
 import {
   Footer,
   FormStatus,
@@ -15,13 +15,13 @@ import Styles from './signup-styles.scss';
 type Props = {
   validation: Validation;
   addAccount: AddAccount;
-  saveAccessToken: SaveAccessToken;
+  updateCurrentAccount: UpdateCurrentAccount;
 };
 
 const SignUp: React.FC<Props> = ({
   validation,
   addAccount,
-  saveAccessToken
+  updateCurrentAccount
 }: Props) => {
   const navigate = useNavigate();
 
@@ -89,7 +89,7 @@ const SignUp: React.FC<Props> = ({
         passwordConfirmation: state.passwordConfirmation
       });
 
-      await saveAccessToken.save(account.accessToken);
+      await updateCurrentAccount.save(account);
       navigate('/');
     } catch (error) {
       setState({
