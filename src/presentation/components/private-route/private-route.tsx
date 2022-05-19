@@ -1,15 +1,19 @@
-/* eslint-disable react/no-unstable-nested-components */
-import React from 'react';
-import { RouteProps, Navigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { RouteProps, Navigate, Routes, Route } from 'react-router-dom';
+import { ApiContext } from '@/presentation/context';
 
-const PrivateRoute: React.FC<RouteProps> = () => {
-  const token = false;
+const PrivateRoute: React.FC<RouteProps> = (props: RouteProps) => {
+  const { getCurrentAccount } = useContext(ApiContext);
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
+  if (getCurrentAccount()?.accessToken) {
+    return (
+      <Routes>
+        <Route {...props} />
+      </Routes>
+    );
   }
 
-  return null;
+  return <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;

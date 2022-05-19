@@ -4,13 +4,17 @@ import { LoginFactory } from '@/main/factories/pages/login/login-factory';
 import { SignUpFactory } from '@/main/factories/pages/signup/signup-factory';
 import { SurveyList } from '@/presentation/pages';
 import { ApiContext } from '@/presentation/context';
-import { setCurrentAccountAdapter } from '@/main/adapters/current-account-adapter';
+import {
+  getCurrentAccountAdapter,
+  setCurrentAccountAdapter
+} from '@/main/adapters/current-account-adapter';
 
 const Router: React.FC = () => {
   return (
     <ApiContext.Provider
       value={{
-        setCurrentAccount: setCurrentAccountAdapter
+        setCurrentAccount: setCurrentAccountAdapter,
+        getCurrentAccount: getCurrentAccountAdapter
       }}
     >
       <BrowserRouter>
