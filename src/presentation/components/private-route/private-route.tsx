@@ -1,19 +1,16 @@
 import React, { useContext } from 'react';
-import { RouteProps, Navigate, Routes, Route } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { ApiContext } from '@/presentation/context';
 
-const PrivateRoute: React.FC<RouteProps> = (props: RouteProps) => {
+const PrivateRoute: React.FC = ({ children }: { children: JSX.Element }) => {
   const { getCurrentAccount } = useContext(ApiContext);
+  const location = useLocation();
 
-  if (getCurrentAccount()?.accessToken) {
-    return (
-      <Routes>
-        <Route {...props} />
-      </Routes>
-    );
+  if (!getCurrentAccount()?.accessToken) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return <Navigate to="/login" replace />;
+  return children;
 };
 
 export default PrivateRoute;

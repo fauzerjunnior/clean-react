@@ -4,6 +4,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { mockAccountModel } from '@/domain/test';
 import { ApiContext } from '@/presentation/context';
+import { SurveyList } from '@/presentation/pages';
 import PrivateRoute from './private-route';
 
 type SutTypes = {
@@ -15,7 +16,9 @@ const makeSut = (account = mockAccountModel()): SutTypes => {
   render(
     <ApiContext.Provider value={{ getCurrentAccount: () => account }}>
       <Router navigator={history} location={history.location}>
-        <PrivateRoute />
+        <PrivateRoute>
+          <SurveyList />
+        </PrivateRoute>
       </Router>
     </ApiContext.Provider>
   );

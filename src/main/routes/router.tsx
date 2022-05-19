@@ -8,6 +8,7 @@ import {
   getCurrentAccountAdapter,
   setCurrentAccountAdapter
 } from '@/main/adapters/current-account-adapter';
+import { PrivateRoute } from '@/presentation/components';
 
 const Router: React.FC = () => {
   return (
@@ -21,7 +22,14 @@ const Router: React.FC = () => {
         <Routes>
           <Route path="/login" element={<LoginFactory />} />
           <Route path="/signup" element={<SignUpFactory />} />
-          <Route path="/" element={<SurveyList />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <SurveyList />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </ApiContext.Provider>
