@@ -1,10 +1,8 @@
-/* eslint-disable react/no-unused-prop-types */
-import { SurveyList } from '@/presentation/pages';
-import '@/presentation/styles/global.scss';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LoginFactory } from '../factories/pages/login/login-factory';
-import { SignUpFactory } from '../factories/pages/signup/signup-factory';
+import { LoginFactory } from '@/main/factories/pages/login/login-factory';
+import { SignUpFactory } from '@/main/factories/pages/signup/signup-factory';
+import { SurveyList } from '@/presentation/pages';
 
 const Router: React.FC = () => {
   return (
