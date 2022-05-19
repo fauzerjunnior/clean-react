@@ -15,8 +15,8 @@ describe('ComparteFieldsValidation', () => {
 
     const sut = makeSut(field, fieldToCompare);
     const error = sut.validate({
-      [field]: faker.random.word(),
-      [fieldToCompare]: faker.random.word()
+      [field]: faker.random.words(1),
+      [fieldToCompare]: faker.random.words(2)
     });
 
     expect(error).toEqual(new InvalidFieldError());
