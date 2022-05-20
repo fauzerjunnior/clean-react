@@ -52,18 +52,13 @@ const simulateValidSubmit = async (
   await waitFor(() => form);
 };
 
-const testElementExists = (fieldname: string): void => {
-  const element = screen.getByTestId(fieldname);
-  expect(element).toBeTruthy();
-};
-
 describe('Login component', () => {
   it('should not render spinner and error on start', () => {
     const validationError = faker.random.words();
     makeSut({ validationError });
 
-    Helper.testChildCount('error-wrap', 0);
-    Helper.testButtonIsDisabled('submit', true);
+    expect(screen.getByTestId('error-wrap').children).toHaveLength(0);
+    expect(screen.getByTestId('submit')).toBeDisabled();
   });
 
   it('should start with submit button disabled', () => {
@@ -71,7 +66,7 @@ describe('Login component', () => {
     makeSut({ validationError });
     Helper.populateField('email');
 
-    Helper.testButtonIsDisabled('submit', true);
+    expect(screen.getByTestId('submit')).toBeDisabled();
     Helper.testStatusForField('email', validationError);
     Helper.testStatusForField('password', validationError);
   });
@@ -94,14 +89,14 @@ describe('Login component', () => {
     makeSut();
 
     await simulateValidSubmit();
-    Helper.testButtonIsDisabled('submit', false);
+    expect(screen.getByTestId('submit')).toBeEnabled();
   });
 
   it('should load spinner on submit', async () => {
     makeSut();
 
     await simulateValidSubmit();
-    testElementExists('spinner');
+    expect(screen.queryByTestId('spinner')).toBeInTheDocument();
   });
 
   it('should call authentication with correct values', async () => {
@@ -141,8 +136,8 @@ describe('Login component', () => {
     jest.spyOn(authenticationSpy, 'auth').mockRejectedValueOnce(error);
 
     await simulateValidSubmit();
-    Helper.testElementText('main-error', error.message);
-    Helper.testChildCount('error-wrap', 1);
+    expect(screen.getByTestId('main-error')).toHaveTextContent(error.message);
+    expect(screen.getByTestId('error-wrap').children).toHaveLength(1);
   });
 
   test('should call UpdateCurrentAccount on success', async () => {
