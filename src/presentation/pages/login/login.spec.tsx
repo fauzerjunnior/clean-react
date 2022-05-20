@@ -3,13 +3,7 @@ import { InvalidCredentialsError } from '@/domain/errors';
 import { Login } from '@/presentation/pages';
 import { AuthenticationSpy, Helper, ValidationStub } from '@/presentation/test';
 import faker from '@faker-js/faker';
-import {
-  cleanup,
-  fireEvent,
-  render,
-  waitFor,
-  screen
-} from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { ApiContext } from '@/presentation/context';
@@ -64,8 +58,6 @@ const testElementExists = (fieldname: string): void => {
 };
 
 describe('Login component', () => {
-  afterEach(cleanup);
-
   it('should not render spinner and error on start', () => {
     const validationError = faker.random.words();
     makeSut({ validationError });

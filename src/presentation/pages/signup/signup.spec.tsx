@@ -1,13 +1,7 @@
 import { InvalidCredentialsError } from '@/domain/errors';
 import { AddAccountSpy, Helper, ValidationStub } from '@/presentation/test';
 import faker from '@faker-js/faker';
-import {
-  cleanup,
-  fireEvent,
-  render,
-  waitFor,
-  screen
-} from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { Router } from 'react-router-dom';
@@ -63,8 +57,6 @@ const simulateValidSubmit = async (
 };
 
 describe('SignUp component', () => {
-  afterEach(cleanup);
-
   it('should start with initial state', () => {
     const validationError = faker.random.words();
     makeSut({ validationError });
