@@ -5,6 +5,7 @@ export class SetStorageMock implements SetStorage {
 
   value: any;
 
+  /* istanbul ignore next */
   set(key: string, value: any): void {
     this.key = key;
     this.value = value;
