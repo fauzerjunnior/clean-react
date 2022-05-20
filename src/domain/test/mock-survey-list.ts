@@ -1,5 +1,5 @@
 import faker from '@faker-js/faker';
-import { SurveyModel } from '../models';
+import { SurveyModel } from '@/domain/models';
 
 export const mockSurveyListModel = (): SurveyModel[] => [
   {

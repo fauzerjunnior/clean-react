@@ -4,7 +4,7 @@ import { UnexpectedError } from '@/domain/errors';
 import { SurveyModel } from '@/domain/models';
 import { mockSurveyListModel } from '@/domain/test';
 import faker from '@faker-js/faker';
-import { RemoveLoadSurveyList } from './remote-load-survey-list';
+import { RemoveLoadSurveyList } from '@/data/usecases';
 
 type SutTypes = {
   sut: RemoveLoadSurveyList;

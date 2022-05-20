@@ -4,7 +4,7 @@ import { EmailInUseError, UnexpectedError } from '@/domain/errors';
 import { AccountModel } from '@/domain/models';
 import { mockAccountModel, mockAddAccountParams } from '@/domain/test';
 import faker from '@faker-js/faker';
-import { RemoteAddAccount } from './remote-add-account';
+import { RemoteAddAccount } from '@/data/usecases';
 
 type SutTypes = {
   sut: RemoteAddAccount;
