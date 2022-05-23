@@ -6,13 +6,17 @@ import { createMemoryHistory } from 'history';
 
 const history = createMemoryHistory({ initialEntries: ['/'] });
 
+const makeSut = (): void => {
+  render(
+    <Router navigator={history} location={history.location}>
+      <SurveyList />
+    </Router>
+  );
+};
+
 describe('SurveyList Component', () => {
   test('should present 4 empty items on start', () => {
-    render(
-      <Router navigator={history} location={history.location}>
-        <SurveyList />
-      </Router>
-    );
+    makeSut();
     const surveyList = screen.getByTestId('survey-list');
 
     expect(surveyList.querySelectorAll('li:empty').length).toBe(4);
