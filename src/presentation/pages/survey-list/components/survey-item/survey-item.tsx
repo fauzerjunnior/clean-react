@@ -1,5 +1,6 @@
 import { SurveyModel } from '@/domain/models';
 import { Icon, IconName } from '@/presentation/components';
+import * as Helper from '@/presentation/helper';
 import React from 'react';
 import Styles from './survey-item-styles.scss';
 
@@ -19,9 +20,7 @@ const SurveyItem: React.FC<Props> = ({ survey }: Props) => {
             {survey.date.getDate().toString().padStart(2, '0')}
           </span>
           <span data-testid="month" className={Styles.month}>
-            {survey.date
-              .toLocaleString('pt-BR', { month: 'short' })
-              .replace('.', '')}
+            {Helper.formatMonth(survey.date)}
           </span>
           <span data-testid="year" className={Styles.year}>
             {survey.date.getFullYear()}
