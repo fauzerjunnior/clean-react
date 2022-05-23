@@ -5,9 +5,9 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { mockAccountModel } from '@/domain/test';
 import { ApiContext } from '@/presentation/context';
 import { SurveyList } from '@/presentation/pages';
-import PrivateRoute from './private-route';
 import { SurveyModel } from '@/domain/models';
 import { LoadSurveyList } from '@/domain/usecases';
+import PrivateRoute from './private-route';
 
 type SutTypes = {
   history: MemoryHistory;
