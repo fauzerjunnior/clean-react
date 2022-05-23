@@ -6,18 +6,32 @@ import { mockAccountModel } from '@/domain/test';
 import { ApiContext } from '@/presentation/context';
 import { SurveyList } from '@/presentation/pages';
 import PrivateRoute from './private-route';
+import { SurveyModel } from '@/domain/models';
+import { LoadSurveyList } from '@/domain/usecases';
 
 type SutTypes = {
   history: MemoryHistory;
 };
 
+class LoadSurveyListSpy implements LoadSurveyList {
+  callsCount = 0;
+
+  async loadAll(): Promise<SurveyModel[]> {
+    this.callsCount += 1;
+
+    return [];
+  }
+}
+
 const makeSut = (account = mockAccountModel()): SutTypes => {
   const history = createMemoryHistory({ initialEntries: ['/'] });
+  const loadSurveyListSpy = new LoadSurveyListSpy();
+
   render(
     <ApiContext.Provider value={{ getCurrentAccount: () => account }}>
       <Router navigator={history} location={history.location}>
         <PrivateRoute>
-          <SurveyList />
+          <SurveyList loadSurveyList={loadSurveyListSpy} />
         </PrivateRoute>
       </Router>
     </ApiContext.Provider>
