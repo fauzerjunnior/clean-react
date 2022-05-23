@@ -17,13 +17,13 @@ const SurveyItem: React.FC<Props> = ({ survey }: Props) => {
         <Icon className={Styles.iconWrap} iconName={iconName} />
         <time>
           <span data-testid="day" className={Styles.day}>
-            {survey.date.getDate().toString().padStart(2, '0')}
+            {Helper.formatDay(survey.date)}
           </span>
           <span data-testid="month" className={Styles.month}>
             {Helper.formatMonth(survey.date)}
           </span>
           <span data-testid="year" className={Styles.year}>
-            {survey.date.getFullYear()}
+            {Helper.formatYear(survey.date)}
           </span>
         </time>
         <p data-testid="question">{survey.question}</p>
