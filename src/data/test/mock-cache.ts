@@ -16,7 +16,7 @@ export class SetStorageMock implements SetStorage {
 export class GetStorageSpy implements GetStorage {
   key: string;
 
-  value = faker.datatype.json();
+  value: any = faker.datatype.json();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   get(key: string): any {
