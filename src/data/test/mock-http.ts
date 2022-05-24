@@ -37,6 +37,7 @@ export class HttpPostClientSpy<R = any> implements HttpPostClient<R> {
 
 export class HttpGetClientSpy<R = any> implements HttpGetClient<R> {
   url: string;
+
   headers?: any;
 
   response: HttpResponse<R> = {
