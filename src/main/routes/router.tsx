@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LoginFactory } from '@/main/factories/pages/login/login-factory';
-import { SignUpFactory } from '@/main/factories/pages/signup/signup-factory';
-import { SurveyList } from '@/presentation/pages';
+import {
+  LoginFactory,
+  SignUpFactory,
+  SurveyListFactory
+} from '@/main/factories/pages';
 import { ApiContext } from '@/presentation/context';
 import {
   getCurrentAccountAdapter,
@@ -26,7 +28,7 @@ const Router: React.FC = () => {
             path="/"
             element={
               <PrivateRoute>
-                <SurveyList />
+                <SurveyListFactory />
               </PrivateRoute>
             }
           />
