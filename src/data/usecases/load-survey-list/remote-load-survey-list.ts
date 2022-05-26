@@ -2,7 +2,7 @@ import { HttpGetClient, HttpStatusCode } from '@/data/protocols/http';
 import { UnexpectedError } from '@/domain/errors';
 import { LoadSurveyList } from '@/domain/usecases';
 
-export class RemoveLoadSurveyList implements LoadSurveyList {
+export class RemoteLoadSurveyList implements LoadSurveyList {
   constructor(
     private readonly url: string,
     private readonly httpGetClient: HttpGetClient<RemoteLoadSurveyList.Model[]>
