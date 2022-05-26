@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SurveyContext } from '@/presentation/pages/survey-list/components';
-import * as Styles from './error-styles.scss';
+import Styles from './error-styles.scss';
 
 const Error: React.FC = () => {
   const { state } = useContext(SurveyContext);
