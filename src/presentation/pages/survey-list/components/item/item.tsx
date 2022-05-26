@@ -2,7 +2,7 @@ import { LoadSurveyList } from '@/domain/usecases';
 import { Icon, IconName } from '@/presentation/components';
 import * as Helper from '@/presentation/helper';
 import React from 'react';
-import Styles from './survey-item-styles.scss';
+import Styles from './item-styles.scss';
 
 type Props = {
   survey: LoadSurveyList.Model;
