@@ -4,33 +4,24 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { mockAccountModel } from '@/domain/test';
 import { ApiContext } from '@/presentation/context';
-import { SurveyList } from '@/presentation/pages';
-import { LoadSurveyList } from '@/domain/usecases';
 import PrivateRoute from './private-route';
 
 type SutTypes = {
   history: MemoryHistory;
 };
 
-class LoadSurveyListSpy implements LoadSurveyList {
-  callsCount = 0;
-
-  async loadAll(): Promise<LoadSurveyList.Model[]> {
-    this.callsCount += 1;
-
-    return [];
-  }
-}
+const Page: React.FC = () => {
+  return <h1>Mock page</h1>;
+};
 
 const makeSut = (account = mockAccountModel()): SutTypes => {
   const history = createMemoryHistory({ initialEntries: ['/'] });
-  const loadSurveyListSpy = new LoadSurveyListSpy();
 
   render(
     <ApiContext.Provider value={{ getCurrentAccount: () => account }}>
       <Router navigator={history} location={history.location}>
         <PrivateRoute>
-          <SurveyList loadSurveyList={loadSurveyListSpy} />
+          <Page />
         </PrivateRoute>
       </Router>
     </ApiContext.Provider>
