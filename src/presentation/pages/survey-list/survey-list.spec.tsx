@@ -4,14 +4,13 @@ import { SurveyList } from '@/presentation/pages';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { LoadSurveyList } from '@/domain/usecases';
-import { SurveyModel } from '@/domain/models';
 
 const history = createMemoryHistory({ initialEntries: ['/'] });
 
 class LoadSurveyListSpy implements LoadSurveyList {
   callsCount = 0;
 
-  async loadAll(): Promise<SurveyModel[]> {
+  async loadAll(): Promise<LoadSurveyList.Model[]> {
     this.callsCount += 1;
 
     return [];

@@ -5,7 +5,6 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { mockAccountModel } from '@/domain/test';
 import { ApiContext } from '@/presentation/context';
 import { SurveyList } from '@/presentation/pages';
-import { SurveyModel } from '@/domain/models';
 import { LoadSurveyList } from '@/domain/usecases';
 import PrivateRoute from './private-route';
 
@@ -16,7 +15,7 @@ type SutTypes = {
 class LoadSurveyListSpy implements LoadSurveyList {
   callsCount = 0;
 
-  async loadAll(): Promise<SurveyModel[]> {
+  async loadAll(): Promise<LoadSurveyList.Model[]> {
     this.callsCount += 1;
 
     return [];

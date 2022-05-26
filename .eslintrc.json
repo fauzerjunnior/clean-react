@@ -62,6 +62,9 @@
         "jsx-a11y/click-events-have-key-events": "off",
         "max-classes-per-file": "off",
         "jsx-a11y/alt-text": "off",
-        "func-names": "off"
+        "func-names": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "no-redeclare": "off",
+        "import/export": "off"
     }
 }
