@@ -8,9 +8,9 @@ import {
 import { LoadSurveyList } from '@/domain/usecases';
 import { SurveyModel } from '@/domain/models';
 import { AccessDeniedError } from '@/domain/errors';
-import Styles from './survey-list-styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { ApiContext } from '@/presentation/context';
+import Styles from './survey-list-styles.scss';
 
 type Props = {
   loadSurveyList: LoadSurveyList;
