@@ -1,18 +1,40 @@
-/* eslint-disable react/no-unused-prop-types */
-import '@/presentation/styles/global.scss';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LoginFactory } from '../factories/pages/login/login-factory';
-import { SignUpFactory } from '../factories/pages/signup/signup-factory';
+import {
+  LoginFactory,
+  SignUpFactory,
+  SurveyListFactory
+} from '@/main/factories/pages';
+import { ApiContext } from '@/presentation/context';
+import {
+  getCurrentAccountAdapter,
+  setCurrentAccountAdapter
+} from '@/main/adapters/current-account-adapter';
+import { PrivateRoute } from '@/presentation/components';
 
 const Router: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginFactory />} />
-        <Route path="/signup" element={<SignUpFactory />} />
-      </Routes>
-    </BrowserRouter>
+    <ApiContext.Provider
+      value={{
+        setCurrentAccount: setCurrentAccountAdapter,
+        getCurrentAccount: getCurrentAccountAdapter
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginFactory />} />
+          <Route path="/signup" element={<SignUpFactory />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <SurveyListFactory />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </ApiContext.Provider>
   );
 };
 

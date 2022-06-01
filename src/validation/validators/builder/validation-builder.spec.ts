@@ -1,11 +1,11 @@
 import {
   EmailValidation,
   MinLengthValidation,
-  RequiredFieldValidation
+  RequiredFieldValidation,
+  CompareFieldsValidation,
+  ValidationBuilder as sut
 } from '@/validation/validators';
 import faker from '@faker-js/faker';
-import { CompareFieldsValidation } from '../compare-fields/compare-fields-validation';
-import { ValidationBuilder as sut } from './validation-builder';
 
 describe('ValidationBuilder', () => {
   test('should return RequiredFieldValidation', () => {

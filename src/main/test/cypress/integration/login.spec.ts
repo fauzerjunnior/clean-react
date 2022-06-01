@@ -81,15 +81,20 @@ describe('Login', () => {
     Helper.testUrl('/login');
   });
 
-  it('should present save accessToken if valid credentials are provided', () => {
+  it('should present save account if valid credentials are provided', () => {
     Http.mockOk();
     simulateValidSubmit();
 
     cy.getByTestId('main-error').should('not.exist');
     cy.getByTestId('spinner').should('not.exist');
 
+<<<<<<< HEAD
     Helper.testUrl('/');
     Helper.testLocalStorageItem('accessToken');
+=======
+    FormHelper.testUrl('/');
+    FormHelper.testLocalStorageItem('account');
+>>>>>>> master
   });
 
   it('should prevent multiple submits', () => {

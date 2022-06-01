@@ -1,4 +1,4 @@
-import { Authentication, SaveAccessToken } from '@/domain/usecases';
+import { Authentication } from '@/domain/usecases';
 import {
   Footer,
   FormStatus,
@@ -6,23 +6,19 @@ import {
   LoginHeader,
   SubmitButton
 } from '@/presentation/components';
-import Context from '@/presentation/context/form-context';
+import { FormContext, ApiContext } from '@/presentation/context';
 import { Validation } from '@/presentation/protocols/validation';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Styles from './login-styles.scss';
 
 type Props = {
   validation: Validation;
   authentication: Authentication;
-  saveAccessToken: SaveAccessToken;
 };
 
-const Login: React.FC<Props> = ({
-  validation,
-  authentication,
-  saveAccessToken
-}: Props) => {
+const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+  const { setCurrentAccount } = useContext(ApiContext);
   const navigate = useNavigate();
   const [state, setState] = useState({
     isLoading: false,
@@ -39,7 +35,6 @@ const Login: React.FC<Props> = ({
     const formData = { email, password };
     const emailError = validation.validate('email', formData);
     const passwordError = validation.validate('password', formData);
-
     setState({
       ...state,
       emailError,
@@ -61,8 +56,7 @@ const Login: React.FC<Props> = ({
         email: state.email,
         password: state.password
       });
-
-      await saveAccessToken.save(account.accessToken);
+      setCurrentAccount(account);
       navigate('/');
     } catch (error) {
       setState({
@@ -74,20 +68,20 @@ const Login: React.FC<Props> = ({
   };
 
   return (
-    <div className={Styles.login}>
+    <div className={Styles.loginWrap}>
       <LoginHeader />
-      <Context.Provider value={{ state, setState }}>
+      <FormContext.Provider value={{ state, setState }}>
         <form
           data-testid="form"
           className={Styles.form}
           onSubmit={handleSubmit}
         >
           <h2>Login</h2>
-          <Input type="email" name="email" placeholder="Digite seu email" />
+          <Input type="email" name="email" placeholder="Digite seu e-mail" />
           <Input
             type="password"
             name="password"
-            placeholder="Digite a sua senha"
+            placeholder="Digite sua senha"
           />
           <SubmitButton text="Entrar" />
           <Link data-testid="signup-link" to="/signup" className={Styles.link}>
@@ -95,7 +89,7 @@ const Login: React.FC<Props> = ({
           </Link>
           <FormStatus />
         </form>
-      </Context.Provider>
+      </FormContext.Provider>
       <Footer />
     </div>
   );
