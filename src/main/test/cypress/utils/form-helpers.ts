@@ -1,5 +1,3 @@
-const { baseUrl } = Cypress.config();
-
 export const testInputStatus = (field: string, error?: string): void => {
   cy.getByTestId(`${field}-wrap`).should(
     'have.attr',
