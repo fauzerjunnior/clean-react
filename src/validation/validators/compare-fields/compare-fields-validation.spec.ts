@@ -14,8 +14,8 @@ describe('CompareFieldsValidation', () => {
     const fieldToCompare = faker.internet.userName();
     const sut = makeSut(field, fieldToCompare);
     const error = sut.validate({
-      [field]: faker.random.word(),
-      [fieldToCompare]: faker.random.words(4)
+      [field]: 'any_value',
+      [fieldToCompare]: 'other_value'
     });
 
     expect(error).toEqual(new InvalidFieldError());
