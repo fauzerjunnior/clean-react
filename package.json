@@ -7,16 +7,14 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --passWithNoTests --no-cache",
-    "test:watch": "yarn test -- --watch",
-    "test:staged": "yarn test -- --findRelatedTests",
-    "test:ci": "yarn test -- --coverage",
-    "test:coveralls": "yarn test:ci && coveralls < coverage/lcov.info",
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage",
+    "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info",
     "test:cypress": "cypress open",
-    "check": "npm-check -u -s",
-    "prepare": "husky install"
+    "check": "npm-check -u -s"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.11.1",
