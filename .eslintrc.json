@@ -65,6 +65,7 @@
         "func-names": "off",
         "@typescript-eslint/no-namespace": "off",
         "no-redeclare": "off",
-        "import/export": "off"
+        "import/export": "off",
+        "@typescript-eslint/no-var-requires": "off"
     }
 }
