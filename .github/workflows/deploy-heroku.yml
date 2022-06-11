@@ -8,10 +8,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run lint code
+        run: yarn lint
+
+      - name: Run coveralls
+        run: yarn test:coveralls
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "survey-app-clean-react"
-          heroku_email: "contato@fauzerjunior.com.br"
+          heroku_app_name: 'survey-app-clean-react'
+          heroku_email: 'contato@fauzerjunior.com.br'
