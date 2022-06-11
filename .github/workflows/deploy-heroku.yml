@@ -15,13 +15,19 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run lint code
+      - name: Run code lint
         run: yarn lint
 
-      - name: Run coveralls
-        run: yarn test:coveralls
+      - name: Run test coverage
+        run: yarn test:ci
 
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Publish on coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ github.token }}
+
+      - name: Deploy on Herkou
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'survey-app-clean-react'
