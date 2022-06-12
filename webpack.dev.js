@@ -33,6 +33,7 @@ module.exports = merge(common, {
   },
   devtool: 'inline-source-map',
   devServer: {
+    port: 8080,
     static: './dist',
     devMiddleware: {
       writeToDisk: true

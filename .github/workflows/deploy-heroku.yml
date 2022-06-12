@@ -26,6 +26,9 @@ jobs:
         with:
           github-token: ${{ github.token }}
 
+      - name: Run test cypress
+        run: yarn test:cypress:ci
+
       - name: Deploy on Herkou
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
