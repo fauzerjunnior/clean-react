@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/fauzerjunnior/clean-react/actions/workflows/deploy-heroku.yml/badge.svg)](https://github.com/fauzerjunnior/clean-react/actions/workflows/deploy-heroku.yml)
 [![Coverage Status](https://coveralls.io/repos/github/fauzerjunnior/clean-react/badge.svg?branch=master)](https://coveralls.io/github/fauzerjunnior/clean-react?branch=master)
-[![Vulnerabilities Status](https://snyk.io/test/github/fauzerjunnior/clean_react/badge.svg)](https://snyk.io/test/github/fauzerjunnior/clean_react)
+[![Vulnerabilities Status](https://snyk.io/test/github/fauzerjunnior/clean-react/badge.svg)](https://snyk.io/test/github/fauzerjunnior/clean-react)
 
 # **Clean React - Enquetes para Programadores**
 
