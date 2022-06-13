@@ -1,4 +1,5 @@
-import { HttpGetClient } from '@/data/protocols/http';
+import { AccessDeniedError } from '@/domain/errors/access-denied-error';
+import { HttpGetClient, HttpStatusCode } from '@/data/protocols/http';
 
 export class RemoteLoadSurveyResult {
   constructor(
@@ -7,6 +8,17 @@ export class RemoteLoadSurveyResult {
   ) {}
 
   async load(): Promise<void> {
-    await this.httpGetClient.get({ url: this.url });
+    const httpResponse = await this.httpGetClient.get({ url: this.url });
+
+    switch (httpResponse.statusCode) {
+      case HttpStatusCode.ok:
+        break;
+
+      case HttpStatusCode.forbidden:
+        throw new AccessDeniedError();
+
+      default:
+        break;
+    }
   }
 }
