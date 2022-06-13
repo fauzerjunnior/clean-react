@@ -1,5 +1,5 @@
-import { AccessDeniedError } from '@/domain/errors/access-denied-error';
 import { HttpGetClient, HttpStatusCode } from '@/data/protocols/http';
+import { UnexpectedError, AccessDeniedError } from '@/domain/errors';
 
 export class RemoteLoadSurveyResult {
   constructor(
@@ -18,7 +18,7 @@ export class RemoteLoadSurveyResult {
         throw new AccessDeniedError();
 
       default:
-        break;
+        throw new UnexpectedError();
     }
   }
 }
