@@ -5,7 +5,14 @@
   position: relative;
   width: 80px;
   height: 13px;
+
+  &.negative {
+    div {
+      background-color: $white;
+    }
+  }
 }
+
 .spinner div {
   position: absolute;
   width: 13px;
