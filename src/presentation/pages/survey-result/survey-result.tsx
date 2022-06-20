@@ -1,5 +1,5 @@
-import { Calendar, Footer, Header, Loading } from '@/presentation/components';
 import React from 'react';
+import { Calendar, Footer, Header, Loading } from '@/presentation/components';
 import Styles from './survey-result-styles.scss';
 
 const SurveyResult: React.FC = () => {
