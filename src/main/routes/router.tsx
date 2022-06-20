@@ -11,6 +11,7 @@ import {
   setCurrentAccountAdapter
 } from '@/main/adapters/current-account-adapter';
 import { PrivateRoute } from '@/presentation/components';
+import { SurveyResult } from '@/presentation/pages';
 
 const Router: React.FC = () => {
   return (
@@ -29,6 +30,14 @@ const Router: React.FC = () => {
             element={
               <PrivateRoute>
                 <SurveyListFactory />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/surveys"
+            element={
+              <PrivateRoute>
+                <SurveyResult />
               </PrivateRoute>
             }
           />
