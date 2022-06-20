@@ -1,7 +1,6 @@
-import { LoadSurveyList } from '@/domain/usecases';
-import { Icon, IconName } from '@/presentation/components';
-import * as Helper from '@/presentation/helper';
 import React from 'react';
+import { LoadSurveyList } from '@/domain/usecases';
+import { Calendar, Icon, IconName } from '@/presentation/components';
 import Styles from './item-styles.scss';
 
 type Props = {
@@ -15,17 +14,7 @@ const SurveyItem: React.FC<Props> = ({ survey }: Props) => {
     <li className={Styles.surveyItemWrap}>
       <div className={Styles.surveyContent}>
         <Icon className={Styles.iconWrap} iconName={iconName} />
-        <time>
-          <span data-testid="day" className={Styles.day}>
-            {Helper.formatDay(survey.date)}
-          </span>
-          <span data-testid="month" className={Styles.month}>
-            {Helper.formatMonth(survey.date)}
-          </span>
-          <span data-testid="year" className={Styles.year}>
-            {Helper.formatYear(survey.date)}
-          </span>
-        </time>
+        <Calendar className={Styles.calendarWrap} date={survey.date} />
         <p data-testid="question">{survey.question}</p>
       </div>
       <footer>Ver Resultado</footer>
