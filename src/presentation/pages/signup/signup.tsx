@@ -91,11 +91,11 @@ const SignUp: React.FC<Props> = ({ validation, addAccount }: Props) => {
       setCurrentAccount(account);
       navigate('/');
     } catch (error) {
-      setState({
-        ...state,
+      setState((old) => ({
+        ...old,
         isLoading: false,
         mainError: error.message
-      });
+      }));
     }
   };
 
