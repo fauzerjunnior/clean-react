@@ -12,8 +12,11 @@ import {
 } from '@/main/adapters/current-account-adapter';
 import { PrivateRoute } from '@/presentation/components';
 import { SurveyResult } from '@/presentation/pages';
+import { LoadSurveyResultSpy } from '@/domain/test';
 
 const Router: React.FC = () => {
+  const loadSurveyResultSpy = new LoadSurveyResultSpy();
+
   return (
     <ApiContext.Provider
       value={{
@@ -37,7 +40,7 @@ const Router: React.FC = () => {
             path="/surveys"
             element={
               <PrivateRoute>
-                <SurveyResult />
+                <SurveyResult loadSurveyResult={loadSurveyResultSpy} />
               </PrivateRoute>
             }
           />
