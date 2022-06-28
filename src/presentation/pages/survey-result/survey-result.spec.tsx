@@ -6,24 +6,28 @@ import { mockAccountModel } from '@/domain/test';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
+const makeSut = (): void => {
+  const history = createMemoryHistory({ initialEntries: ['/'] });
+  render(
+    <ApiContext.Provider
+      value={{
+        setCurrentAccount: jest.fn(),
+        getCurrentAccount: () => mockAccountModel()
+      }}
+    >
+      <Router navigator={history} location={history.location}>
+        <SurveyResult />
+      </Router>
+    </ApiContext.Provider>
+  );
+};
+
 describe('SurveyResult component', () => {
   it('should present correct initial state', () => {
-    const history = createMemoryHistory({ initialEntries: ['/'] });
-
-    render(
-      <ApiContext.Provider
-        value={{
-          setCurrentAccount: jest.fn(),
-          getCurrentAccount: () => mockAccountModel()
-        }}
-      >
-        <Router navigator={history} location={history.location}>
-          <SurveyResult />
-        </Router>
-      </ApiContext.Provider>
-    );
+    makeSut();
 
     const surveyResult = screen.getByTestId('survey-result');
+
     expect(surveyResult.childElementCount).toBe(0);
     expect(screen.queryByTestId('error')).not.toBeInTheDocument();
     expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
