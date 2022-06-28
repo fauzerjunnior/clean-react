@@ -1,13 +1,27 @@
-import React from 'react';
-import { Calendar, Footer, Header, Loading } from '@/presentation/components';
+/* eslint-disable @typescript-eslint/no-empty-function */
+import React, { useState } from 'react';
+import {
+  Calendar,
+  Error,
+  Footer,
+  Header,
+  Loading
+} from '@/presentation/components';
+import { LoadSurveyResult } from '@/domain/usecases';
 import Styles from './survey-result-styles.scss';
 
 const SurveyResult: React.FC = () => {
+  const [state] = useState({
+    isLoading: false,
+    error: '',
+    surveyResult: null as LoadSurveyResult.Model
+  });
+
   return (
     <div className={Styles.surveyResultWrap}>
       <Header />
-      <div className={Styles.contentWrap}>
-        {true && (
+      <div data-testid="survey-result" className={Styles.contentWrap}>
+        {state.surveyResult && (
           <>
             <hgroup>
               <Calendar className={Styles.calendarWrap} date={new Date()} />
@@ -44,7 +58,8 @@ const SurveyResult: React.FC = () => {
           </>
         )}
 
-        {false && <Loading />}
+        {state.isLoading && <Loading />}
+        {state.error && <Error error={state.error} reload={() => {}} />}
       </div>
       <Footer />
     </div>
