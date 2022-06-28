@@ -67,6 +67,7 @@
         "no-redeclare": "off",
         "import/export": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "react/require-default-props": "off"
+        "react/require-default-props": "off",
+        "@typescript-eslint/no-empty-function": "off"
     }
 }
