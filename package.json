@@ -1,6 +1,6 @@
 {
   "name": "clean-react",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "description": "React APP using TDD, SOLID, Clean Architecture and Typescript",
   "author": "Fauzer Junior",
   "license": "MIT",
@@ -36,7 +36,6 @@
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "clean-webpack-plugin": "^4.0.0",
-    "cookie-parser": "^1.4.6",
     "coveralls": "^3.1.1",
     "css-loader": "^6.7.1",
     "cypress": "^9.6.1",
@@ -76,6 +75,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "csurf": "^1.11.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
     "express-history-api-fallback": "^2.2.1",
     "helmet": "^5.1.0",
