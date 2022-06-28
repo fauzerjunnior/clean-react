@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved
-} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { SurveyResult } from '@/presentation/pages';
 import { ApiContext } from '@/presentation/context';
 import { LoadSurveyResultSpy, mockAccountModel } from '@/domain/test';
